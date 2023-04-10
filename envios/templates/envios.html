@@ -1,0 +1,22 @@
+<body>
+    <h1>Listagem de Envios:</h1>
+    {% for envio in envios  %}
+        <li> ID: {{ envio.id }}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Data e Hora: {{envio.data}} 
+        <a href="{% url 'editar_envio' envio.id %}">Editar</a> 
+        <a href="{% url 'delete_envio' envio.id %}">Deletar</a> 
+        </li>
+    {% endfor %}
+    <br/>
+
+    <h2>Realizar um novo cadastro? </h2>
+
+    
+    <form action="{% url 'salvar_envio' %}" method="POST">
+        {% csrf_token %}
+        <h4>Destinatario: <input type="text" name="destinatario"></h4>
+        <h4>Remetente: <input type="text" name="remetente"></h4>
+        <h4>Rastreio: <input type="text" name="rastreio"></h4>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>

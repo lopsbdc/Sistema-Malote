@@ -1,0 +1,44 @@
+<body>
+
+    {% load myapp_extras %}
+
+    <form method="get">
+        
+        {{ filtrados.form.as_p }}
+
+        <input type="submit" value="Filtrar">
+        
+    </form>
+
+    {% comment %} {% for envio in filtrados.qs %} {% endcomment %}
+    {% for envio in filtro_obj %}
+        <h2>
+            {{ envio.destinatario }}
+            <br>
+            {{ envio.remetente }}
+            <br>
+            {{ envio.rastreio }}
+            <br>
+            {{ envio.data }}
+            <br>
+        </h2>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if filtro_obj.has_previous %}
+                <a href="{% my_url 1 'page' request.GET.urlencode %}">&laquo; Primeira </a>
+                <a href="{% my_url filtro_obj.previous_page_number 'page' request.GET.urlencode %} "> Anterior </a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ filtro_obj.number }} de {{ filtro_obj.paginator.num_pages }}
+            </span>
+
+            {% if filtro_obj.has_next %}
+                <a href="{% my_url filtro_obj.next_page_number 'page' request.GET.urlencode %}"> Próxima </a>
+                <a href="{% my_url filtro_obj.paginator.num_pages 'page' request.GET.urlencode %}">&raquo; Última </a>
+            {% endif %}
+        </span>
+    </div>
+</body>

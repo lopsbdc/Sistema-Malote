@@ -1,0 +1,33 @@
+<body>
+    
+    <h2>Realizar um novo recebimento? </h2>
+    
+    <form action="{% url 'salvar_recebimento' %}" method="POST">
+        {% csrf_token %}
+        <h4>Destinatario: <input type="text" name="destinatario"></h4>
+        <h4>Remetente: <input type="text" name="remetente"></h4>
+        <h4>CEP Remetente: <input type="text" name="cep_remetente"></h4>
+        <h4>Rastreio: <input type="text" name="rastreio"></h4>
+        <h4>Tipo: <input type="text" name="tipo"></h4>
+        <h4>AR Anexa: <select name="ar_anexa">
+                        <option value="Sim"> Sim </option>
+                        <option value="Não"> Não </option>
+                    </select>
+        </h4>
+        <h4>Departamento: <input type="text" name="departamento"></h4>
+        <h4>Observacao: <input type="text" name="obs"></h4>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <p> </p>
+    
+    <h1>Ultimos recebimentos:</h1>
+    {% for recebido in ultimos_registros  %}
+        <li> ID: {{ recebido.id }}, Destinatario: {{recebido.destinatario}}, Remetente: {{recebido.remetente}}, Rastreio: {{recebido.rastreio}}, Data e Hora: {{recebido.data_recebimento}},
+            CEP Remetente: {{recebido.cep_remetente}}, Tipo: {{recebido.tipo}}, AR Anexa: {{recebido.ar_anexa}}, Departamento: {{recebido.departamento}}  
+        <a href="{% url 'detalhe_recebimento' recebido.id %}">Editar</a> 
+        </li>
+    {% endfor %}
+    <br/>
+</body>

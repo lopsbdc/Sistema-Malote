@@ -1,0 +1,30 @@
+<body>
+
+    <h1>Você está visualizando o registro: {{ recebido.id }}<h1>
+    
+        <form action="{% url 'salvar_detalhe_recebimento' recebido.id %}" method="POST">
+            {% csrf_token %}
+            <h5> Destinatario: <input type="text" name="destinatario" value="{{recebido.destinatario}}"> </h5>
+            <h5> Remetente: <input type="text" name="remetente" value="{{recebido.remetente}}"> </h5>
+            <h5> CEP Remetente: <input type="text" name="cep_remetente" value="{{recebido.cep_remetente}}"> </h5>
+            <h5> Rastreio: <input type="text" name="rastreio" value="{{recebido.rastreio}}"> </h5>
+            <h5> Tipo: <input type="text" name="tipo" value="{{recebido.tipo}}"> </h5>
+            <h5> AR Anexa: <select name="ar_anexa" value="{{recebido.ar_anexa}}">
+                <option value="Sim"> Sim </option>
+                <option value="Não"> Não </option>
+            </select> </h5>
+            <h5> Departamento: <input type="text" name="departamento" value="{{recebido.departamento}}"> </h5>
+            <h5> Status: <input type="text" name="status" value="{{recebido.status}}"> </h5>
+            <h5> Forma de entrega: <input type="text" name="forma_entrega" value="{{recebido.forma_entrega}}"> </h5>
+            <h5> Data da Entrega: <input type="date" name="data_entrega" value='{{recebido.data_entrega|date:"Y-m-d"}}'> </h5>
+            <h5> Observação: <input type="text" name="obs" value="{{recebido.observacao}}"> </h5>
+            <h6> Data da ultima atualização: {{ recebido.data_att }} </h6>
+            <button type="submit">Atualizar</button>
+
+            <h3> Deseja excluir esse registro? </h3>
+            <a href="{% url 'delete_recebimento' recebido.id %}">Deletar</a>
+        </form>
+    
+    
+
+</body>

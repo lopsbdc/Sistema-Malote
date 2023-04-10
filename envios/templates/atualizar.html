@@ -1,0 +1,16 @@
+<body>
+
+    <h1>Você está editando o registro:<h1>
+    <h2> ID: {{envio.id}}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Data e Hora: {{envio.data}} </h2> 
+
+        <form action="{% url 'update_envio' envio.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="destinatario" value="{{envio.destinatario}}">
+            <input type="text" name="remetente" value="{{envio.remetente}}">
+            <input type="text" name="rastreio" value="{{envio.rastreio}}">
+            <button type="submit">Atualizar</button>
+        </form>
+
+        
+
+</body>
