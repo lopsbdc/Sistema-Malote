@@ -6,7 +6,8 @@ from datetime import datetime
 
 def cadastro(request):
     ultimos_registros = Recebidos.objects.all().order_by('-id')[:3]
-    return render(request, 'cadastro.html', {'ultimos_registros': ultimos_registros})
+    ultimo_registro = Recebidos.objects.all().last()
+    return render(request, 'cadastro.html', {'ultimos_registros': ultimos_registros, 'ultimo_registro': ultimo_registro})
 
 
 def salvar_recebimento(request):

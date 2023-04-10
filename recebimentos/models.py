@@ -9,7 +9,7 @@ class Recebidos(models.Model):
     tipo = models.CharField(max_length=100,null=True)
     remetente = models.CharField(max_length=100,null=True)
     cep_remetente = models.CharField(max_length=100,null=True)
-    rastreio = models.CharField(max_length=100,null=True, unique=True)
+    rastreio = models.CharField(max_length=100,null=True, unique=True, blank=True)
     ar_anexa = models.CharField(max_length=100,null=True)
     departamento = models.CharField(max_length=100,null=True)
     data_recebimento = models.DateTimeField (default=timezone.now, blank=True)

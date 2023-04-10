@@ -8,7 +8,7 @@ from django.utils import timezone
 class Envio(models.Model):
     destinatario = models.CharField(max_length=100, null=False)
     remetente = models.CharField(max_length=100)
-    rastreio = models.CharField(max_length=100, unique=True)
+    rastreio = models.CharField(max_length=100, unique=True, blank=True)
     cep = models.CharField(max_length=100)
     departamento = models.CharField(max_length=100)
     servico = models.CharField(max_length=100)

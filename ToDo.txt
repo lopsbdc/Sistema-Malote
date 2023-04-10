@@ -19,9 +19,9 @@ Visão ADM:
 
 - Consulta sem restrição, com att, delete e opção para "entregue"
 - Cadastro, com os ultimos 3 registros para correção ou deletar
-- Visão indicadores (Documentos parados, beneficios...)
-- Visão borderôs
-- Se deletar na consulta, cai no BD de auditoria, e some do oficial
+- Visão indicadores (Documentos parados, beneficios...)                 *
+- Visão borderôs                                                        *
+- Se deletar na consulta, cai no BD de auditoria, e some do oficial     *
 
 
 Visão Gestor:
@@ -30,12 +30,14 @@ Visão Gestor:
 - Sempre que atualizar um campo, cria uma cópia da antiga no BD auditoria, linkado pela Foreign key do ID?
 
 
+
 Funcionalidades:
 
 Login de quem cadastrou, e quem atualizou pela ultima vez
-Repetir dados do ultimo cadastro, e botão para zerar dados (ou o inverso?)
 Combobox de código de postagem dos correios
 Pagina para cada tipo de erro Protocolo HTTP
+Exceção da constraint: Se digitar "Sem rastreio", então permite
+Set o campo para rastreio ou destinatario, ao clicar em salvar / zerar campos
 
 
 
@@ -43,9 +45,12 @@ Histórico de implementações:
 
 - Constraint pra evitar duplicidade no codigo de rastreio
 - Campo observação para os recebimentos
+- Botão para Repetir dados do ultimo cadastro
+- Aviso de campo obrigatório para rastreio
+- Aviso de "data incompleta" ao inserir data da entrega
 
 
 
 Histórico de bugs:
 
-O campo "data de entrega", na parte do recebimento, não aceitava campo nulo (caso não tenha sido entregue ainda, por exemplo). Correção foi mudar o banco para aceitar Blank, e fazer um IF, que caso não tenha nenhum valor, ele não passe a informação
+O campo "data de entrega", na parte do recebimento, não aceitava campo nulo / em branco (caso não tenha sido entregue ainda, por exemplo). Correção foi mudar o banco para aceitar Blank, e fazer um IF, que caso não tenha nenhum valor, ele não passe a informação

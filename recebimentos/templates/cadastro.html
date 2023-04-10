@@ -1,24 +1,39 @@
 <body>
-    
+
+    <script>
+        function ultimo() {
+          document.getElementById("dest").setAttribute("value", "{{ultimo_registro.destinatario}}");
+          document.getElementById("rem").setAttribute("value", "{{ultimo_registro.remetente}}");
+          document.getElementById("cep").setAttribute("value", "{{ultimo_registro.cep_remetente}}");
+          document.getElementById("tip").setAttribute("value", "{{ultimo_registro.tipo}}");
+          document.getElementById("ar").setAttribute("value", "{{ultimo_registro.ar_anexa}}");
+          document.getElementById("dep").setAttribute("value", "{{ultimo_registro.departamento}}");
+          document.getElementById("ob").setAttribute("value", "{{ultimo_registro.observacao}}");
+        }
+      </script>
+
+
     <h2>Realizar um novo recebimento? </h2>
     
     <form action="{% url 'salvar_recebimento' %}" method="POST">
         {% csrf_token %}
-        <h4>Destinatario: <input type="text" name="destinatario"></h4>
-        <h4>Remetente: <input type="text" name="remetente"></h4>
-        <h4>CEP Remetente: <input type="text" name="cep_remetente"></h4>
-        <h4>Rastreio: <input type="text" name="rastreio"></h4>
-        <h4>Tipo: <input type="text" name="tipo"></h4>
-        <h4>AR Anexa: <select name="ar_anexa">
+        <h4>Destinatario: <input id='dest' type="text" name="destinatario"></h4>
+        <h4>Remetente: <input id='rem' type="text" name="remetente"></h4>
+        <h4>CEP Remetente: <input id='cep' type="text" name="cep_remetente"></h4>
+        <h4>Rastreio: <input type="text" name="rastreio" required></h4>
+        <h4>Tipo: <input id='tip' type="text" name="tipo"></h4>
+        <h4>AR Anexa: <select id='ar' name="ar_anexa">
                         <option value="Sim"> Sim </option>
                         <option value="Não"> Não </option>
                     </select>
         </h4>
-        <h4>Departamento: <input type="text" name="departamento"></h4>
-        <h4>Observacao: <input type="text" name="obs"></h4>
+        <h4>Departamento: <input id='dep' type="text" name="departamento"></h4>
+        <h4>Observacao: <input id='ob' type="text" name="obs"></h4>
 
         <button type="submit">Salvar</button>
     </form>
+    
+    <button onclick="ultimo()">Ultimo Registro</button>
 
     <p> </p>
     
