@@ -1,0 +1,15 @@
+<body>
+
+    <h1>Você está editando o registro:<h1>
+    <h2> ID: {{etiqueta.id}}, Sigla do Código: {{etiqueta.codigo}}, Tipo de Servico: {{etiqueta.servico}}, </h2> 
+
+        <form action="{% url 'update_cadastro_etiqueta' etiqueta.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="codigo" value="{{etiqueta.codigo}}">
+            <input type="text" name="servico" value="{{etiqueta.servico}}">
+            <button type="submit">Atualizar</button>
+        </form>
+
+        
+
+</body>

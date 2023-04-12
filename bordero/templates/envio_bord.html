@@ -1,0 +1,28 @@
+{% extends 'base_bord.html' %}
+{% block body %}
+
+<hr style="border-top:1px solid #000; clear:both;"/>
+<table id="table" class="table table-bordered" style="margin-left:auto; margin-right:auto">
+    <thead class="alert-warning">
+        <tr>
+            <th>Departamento</th>
+            <th>CEP</th>
+            <th>Rastreio</th>
+            <th>Codigo de Postagem</th>
+            <th>Data do registro</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dado in bd %}
+        <tr>
+            <td>{{dado.departamento}}</td>
+            <td>{{dado.cep}}</td>
+            <td>{{dado.rastreio}}</td>
+            <td>{{dado.rastreio}}</td>
+            <td>{{dado.data}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

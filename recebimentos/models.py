@@ -4,6 +4,13 @@ from django.utils import timezone
 
 # Create your models here.
 
+class Setores(models.Model):
+    departamento = models.CharField(max_length=100,null=True,blank=False, unique=True)
+         
+    def __str__(self):
+        return self.departamento
+
+
 class Recebidos(models.Model):
     destinatario = models.CharField(max_length=100, null=False)
     tipo = models.CharField(max_length=100,null=True)
@@ -11,7 +18,7 @@ class Recebidos(models.Model):
     cep_remetente = models.CharField(max_length=100,null=True)
     rastreio = models.CharField(max_length=100,null=True, unique=True, blank=True)
     ar_anexa = models.CharField(max_length=100,null=True)
-    departamento = models.CharField(max_length=100,null=True)
+    departamento = models.ForeignKey(Setores, on_delete=models.PROTECT)
     data_recebimento = models.DateTimeField (default=timezone.now, blank=True)
     data_att = models.DateTimeField(null=True)
     status = models.CharField(max_length=100,null=True)
@@ -20,6 +27,4 @@ class Recebidos(models.Model):
     observacao = models.CharField(max_length=200, blank=True, null=True)
     
     def __str__(self):
-        return self.destinatario
-    
-    
+        return self.destinatario   

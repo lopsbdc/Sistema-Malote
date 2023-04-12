@@ -1,24 +1,18 @@
-Ainda ta em tempo de estudar sobre:
-
-Forms
-Combobox
-Django dependent drop down list, filtro com dropdowns dependentes
-
-
-
 
 O que implementar:
 
 Visão meninos:
 
 - Consulta sem att ou delete, porem, com opção para "entregue" e forma de entrega
-- Cadastro, com os ultimos 3 registros para correção ou deletar
+- Cadastro, com os ultimos 3 registros para correção apenas. Pode mudar tudo ali, mas delete só com adm+
 - Visão borderôs
 
 Visão ADM:
 
 - Consulta sem restrição, com att, delete e opção para "entregue"
 - Cadastro, com os ultimos 3 registros para correção ou deletar
+- Criar, editar e excluir departamentos (Não pode ser delete cascade!)
+- Criar, editar e excluir serviços + código de postagem dos correios (Não pode ser delete cascade!)
 - Visão indicadores (Documentos parados, beneficios...)                 *
 - Visão borderôs                                                        *
 - Se deletar na consulta, cai no BD de auditoria, e some do oficial     *
@@ -33,13 +27,21 @@ Visão Gestor:
 
 Funcionalidades:
 
+Página unica dos borderôs, onde filtra por caixa de seleção o departamento. Só muda a visao de envio e recebimento (BDs diferentes,
+e preset de só mostrar o que ta como não entregue) https://www.youtube.com/watch?v=v4MYda3VhqQ
 Login de quem cadastrou, e quem atualizou pela ultima vez
 Combobox de código de postagem dos correios
 Pagina para cada tipo de erro Protocolo HTTP
 Exceção da constraint: Se digitar "Sem rastreio", então permite
 Set o campo para rastreio ou destinatario, ao clicar em salvar / zerar campos
+Indicadores: https://datatables.net/examples/api/highcharts.html
+
+Combobox
+Django dependent drop down list
 
 
+
+**********************************************************************************************************************
 
 Histórico de implementações:
 

@@ -1,0 +1,16 @@
+<body>
+
+    <h1>Você está editando o registro:<h1>
+    <h2> ID: {{post.id}}, Departamento: {{post.departamento}}, Servico: {{post.servico}}, Código de Postagem: {{post.postagem}}, </h2> 
+
+        <form action="{% url 'update_cadastro_postagem' post.id %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="departamento" value="{{post.departamento}}">
+            <input type="text" name="servico" value="{{post.servico}}">
+            <input type="text" name="postagem" value="{{post.postagem}}">
+            <button type="submit">Atualizar</button>
+        </form>
+
+        
+
+</body>

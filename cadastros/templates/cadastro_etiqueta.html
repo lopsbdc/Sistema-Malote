@@ -1,0 +1,19 @@
+<body>
+    <h1>Listagem de Códigos:</h1>
+    {% for etiquetas in etiqueta  %}
+        <li> ID: {{ etiquetas.id }}, Código: {{etiquetas.codigo}}, Servico: {{etiquetas.servico}} 
+        <a href="{% url 'editar_cadastro_etiqueta' etiquetas.id %}">Editar</a> 
+        </li>
+    {% endfor %}
+    <br/>
+
+    <h2>Realizar um novo cadastro? </h2>
+
+    
+    <form action="{% url 'salvar_cadastro_etiqueta' %}" method="POST">
+        {% csrf_token %}
+        <h4>Sigla do Código: <input type="text" name="Codigo"></h4>
+        <h4>Tipo de Servico: <input type="text" name="Servico"></h4>
+        <button type="submit">Salvar</button>
+    </form>
+</body>

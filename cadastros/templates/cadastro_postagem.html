@@ -1,0 +1,20 @@
+<body>
+    <h1>Listagem Códigos de Postagem</h1>
+    {% for posts in post  %}
+        <li> ID: {{ posts.id }}, Departamento: {{posts.departamento}}, Servico: {{posts.servico}}, Código de Postagem: {{posts.postagem}} 
+        <a href="{% url 'editar_cadastro_postagem' posts.id %}">Editar</a> 
+        </li>
+    {% endfor %}
+    <br/>
+
+    <h2>Realizar um novo cadastro? </h2>
+
+    
+    <form action="{% url 'salvar_cadastro_postagem' %}" method="POST">
+        {% csrf_token %}
+        <h4>Departamento: <input type="text" name="departamento"></h4>
+        <h4>Serviço: <input type="text" name="servico"></h4>
+        <h4>Código de Postagem: <input type="text" name="postagem"></h4>
+        <button type="submit">Salvar</button>
+    </form>
+</body>

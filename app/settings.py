@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'envios.apps.EnviosConfig',
     'recebimentos.apps.RecebimentosConfig',
+    'bordero.apps.BorderoConfig',
+    'cadastros.apps.CadastrosConfig',
 ]
 
 MIDDLEWARE = [

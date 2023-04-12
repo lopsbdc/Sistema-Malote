@@ -1,0 +1,18 @@
+<body>
+    <h1>Listagem de Envios:</h1>
+    {% for dep in departamentos  %}
+        <li> ID: {{ dep.id }}, Departamento: {{dep.departamento}} 
+        <a href="{% url 'editar_cadastro_dep' dep.id %}">Editar</a> 
+        </li>
+    {% endfor %}
+    <br/>
+
+    <h2>Realizar um novo cadastro? </h2>
+
+    
+    <form action="{% url 'salvar_cadastro_dep' %}" method="POST">
+        {% csrf_token %}
+        <h4>Departamento: <input type="text" name="departamento"></h4>
+        <button type="submit">Salvar</button>
+    </form>
+</body>

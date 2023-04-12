@@ -22,10 +22,10 @@ def salvar_envio(request):
     destinatario = request.POST.get("destinatario")
     remetente = request.POST.get("remetente")
     rastreio = request.POST.get("rastreio")
-    departamento = request.POST.get("departamento")
-    etiqueta = rastreio[2]
-    servico = EtiquetaCorreios.objects.get(servico=etiqueta)
-    cartao = "teste"
+    #departamento = request.POST.get("departamento")
+    #etiqueta = rastreio[2]
+    #servico = EtiquetaCorreios.objects.get(servico=etiqueta)
+    #cartao = "teste"
     Envio.objects.create(destinatario=destinatario, rastreio=rastreio, remetente=remetente)
     return redirect(home_envio)
 
