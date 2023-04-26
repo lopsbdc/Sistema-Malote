@@ -13,7 +13,11 @@
     <form action="{% url 'salvar_cadastro_etiqueta' %}" method="POST">
         {% csrf_token %}
         <h4>Sigla do Código: <input type="text" name="Codigo"></h4>
-        <h4>Tipo de Servico: <input type="text" name="Servico"></h4>
+        <h4>Tipo de Servico: <select name="Servico">
+            <option value="PAC"> PAC </option>
+            <option value="Sedex"> Sedex </option>
+            <option value="Sedex 10"> Sedex 10 </option>
+        </select>
         <button type="submit">Salvar</button>
     </form>
 </body>

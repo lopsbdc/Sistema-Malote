@@ -1,7 +1,7 @@
 <body>
     <h1>Listagem de Envios:</h1>
     {% for envio in envios  %}
-        <li> ID: {{ envio.id }}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Data e Hora: {{envio.data}} 
+        <li> ID: {{ envio.id }}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Postagem: {{envio.postagem}}, Data e Hora: {{envio.data}} 
         <a href="{% url 'editar_envio' envio.id %}">Editar</a> 
         <a href="{% url 'delete_envio' envio.id %}">Deletar</a> 
         </li>
@@ -16,6 +16,14 @@
         <h4>Destinatario: <input type="text" name="destinatario"></h4>
         <h4>Remetente: <input type="text" name="remetente"></h4>
         <h4>Rastreio: <input type="text" name="rastreio"></h4>
+        <h4>CEP: <input type="text" name="cep"></h4>
+
+        <h4>Departamento: <select name="departamento"></h4>
+            <option value="{{post.departamento}}" selected disabled hidden> {{post.departamento}} </option>
+            {% for deps in dep %}
+                <option value="{{deps.departamento}}">{{deps.departamento}} </option>
+            {% endfor %}
+            </select>
 
         <button type="submit">Salvar</button>
     </form>

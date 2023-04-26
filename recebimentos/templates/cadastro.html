@@ -6,8 +6,8 @@
           document.getElementById("rem").setAttribute("value", "{{ultimo_registro.remetente}}");
           document.getElementById("cep").setAttribute("value", "{{ultimo_registro.cep_remetente}}");
           document.getElementById("tip").setAttribute("value", "{{ultimo_registro.tipo}}");
-          document.getElementById("ar").setAttribute("value", "{{ultimo_registro.ar_anexa}}");
-          document.getElementById("dep").setAttribute("value", "{{ultimo_registro.departamento}}");
+          document.getElementById("ar").setAttribute("selected", "{{ultimo_registro.ar_anexa}}");
+          document.getElementById("dep").setAttribute("selected", "{{ultimo_registro.departamento}}");
           document.getElementById("ob").setAttribute("value", "{{ultimo_registro.observacao}}");
         }
       </script>
@@ -23,11 +23,17 @@
         <h4>Rastreio: <input type="text" name="rastreio" required></h4>
         <h4>Tipo: <input id='tip' type="text" name="tipo"></h4>
         <h4>AR Anexa: <select id='ar' name="ar_anexa">
-                        <option value="Sim"> Sim </option>
                         <option value="Não"> Não </option>
+                        <option value="Sim"> Sim </option>
                     </select>
         </h4>
-        <h4>Departamento: <input id='dep' type="text" name="departamento"></h4>
+        <h4>Departamento: <select id='dep' name="departamento" required></h4>
+            <option value=""> </option>
+            {% for deps in dep %}
+                <option value="{{deps.departamento}}"> {{deps.departamento}} </option>
+            {% endfor %}
+            </select>
+
         <h4>Observacao: <input id='ob' type="text" name="obs"></h4>
 
         <button type="submit">Salvar</button>

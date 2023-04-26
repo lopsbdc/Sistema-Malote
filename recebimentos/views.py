@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recebidos
+from .models import Recebidos, Setores
 from datetime import datetime
 
 # Create your views here.
@@ -7,7 +7,8 @@ from datetime import datetime
 def cadastro(request):
     ultimos_registros = Recebidos.objects.all().order_by('-id')[:3]
     ultimo_registro = Recebidos.objects.all().last()
-    return render(request, 'cadastro.html', {'ultimos_registros': ultimos_registros, 'ultimo_registro': ultimo_registro})
+    dep = Setores.objects.all()
+    return render(request, 'cadastro.html', {'ultimos_registros': ultimos_registros, 'ultimo_registro': ultimo_registro, 'dep':dep})
 
 
 def salvar_recebimento(request):
@@ -17,7 +18,7 @@ def salvar_recebimento(request):
     cep_remetente = request.POST.get("cep_remetente")
     tipo = request.POST.get("tipo")
     ar_anexa = request.POST.get("ar_anexa")
-    departamento = request.POST.get("departamento")
+    departamento = Setores.objects.filter(departamento = request.POST.get("departamento")).first()
     obs = request.POST.get("obs")
     status = "Não entregue"
     Recebidos.objects.create(destinatario=destinatario, rastreio=rastreio, remetente=remetente, cep_remetente=cep_remetente, 
@@ -33,7 +34,7 @@ def salvar_detalhe_recebimento(request, id):
     obs = request.POST.get("obs")
     ntipo = request.POST.get("tipo")
     nar = request.POST.get("ar_anexa")
-    ndep = request.POST.get("departamento")
+    ndep = Setores.objects.filter(departamento = request.POST.get("departamento")).first()
     ndata = request.POST.get("data_entrega")
     nstatus = request.POST.get("status")
     nforma = request.POST.get("forma_entrega")
@@ -73,7 +74,8 @@ def salvar_detalhe_recebimento(request, id):
 
 def detalhe_recebimento(request, id):
     recebido = Recebidos.objects.get(id=id)
-    return render(request, "atualizar_recebido.html", {"recebido": recebido})
+    dep = Setores.objects.all()
+    return render(request, "atualizar_recebido.html", {"recebido": recebido, 'dep':dep})
 
 
 def delete_recebimento(request, id):

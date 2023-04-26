@@ -12,8 +12,19 @@
     
     <form action="{% url 'salvar_cadastro_postagem' %}" method="POST">
         {% csrf_token %}
-        <h4>Departamento: <input type="text" name="departamento"></h4>
-        <h4>Serviço: <input type="text" name="servico"></h4>
+
+        <h4>Departamento: <select name="departamento"></h4>
+            {% for deps in dep %}
+                <option value="{{deps.departamento}}"> {{deps.departamento}} </option>
+            {% endfor %}
+            </select>
+
+        <h4>Serviço: <select name="servico"></h4>
+            {% for servs in serv %}
+                <option value="{{servs.servico}}"> {{servs.servico}} </option>
+            {% endfor %}
+            </select>
+
         <h4>Código de Postagem: <input type="text" name="postagem"></h4>
         <button type="submit">Salvar</button>
     </form>

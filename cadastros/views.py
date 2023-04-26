@@ -66,7 +66,9 @@ def update_cadastro_etiqueta(request, id):
 
 def cadastro_postagem(request):
     post = CodigoPostagem.objects.all()
-    return render(request, "cadastro_postagem.html", {"post": post})
+    dep = Setores.objects.all()
+    serv = EtiquetaCorreios.objects.values('servico').distinct()
+    return render(request, "cadastro_postagem.html", {"post": post, "dep":dep, "serv":serv})
 
 def salvar_cadastro_postagem(request):
     departamento = request.POST.get("departamento")
@@ -79,16 +81,20 @@ def salvar_cadastro_postagem(request):
 
 def editar_cadastro_postagem(request, id):
     post = CodigoPostagem.objects.get(id=id)
-    return render(request, "atualizar_cadastro_postagem.html", {"post": post})
+    dep = Setores.objects.all()
+    serv = EtiquetaCorreios.objects.values('servico').distinct()
+    return render(request, "atualizar_cadastro_postagem.html", {"post": post, "dep":dep, "serv":serv})
 
 
 def update_cadastro_postagem(request, id):
     ndepartamento = request.POST.get("departamento")
     nservico = request.POST.get("servico")
     npostagem = request.POST.get("postagem")
+    departamento1 = Setores.objects.get(departamento=ndepartamento)
+    servico1 = EtiquetaCorreios.objects.filter(servico=nservico).order_by('servico').first()
     post = CodigoPostagem.objects.get(id=id)
-    post.departamento = ndepartamento
-    post.servico = nservico
+    post.departamento = departamento1
+    post.servico = servico1
     post.postagem = npostagem
     post.save()
     return redirect(cadastro_postagem)

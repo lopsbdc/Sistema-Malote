@@ -5,8 +5,21 @@
 
         <form action="{% url 'update_cadastro_postagem' post.id %}" method="POST">
             {% csrf_token %}
-            <input type="text" name="departamento" value="{{post.departamento}}">
-            <input type="text" name="servico" value="{{post.servico}}">
+
+            <h4>Departamento: <select selected="{{post.departamento}}" name="departamento"></h4>
+                <option value="{{post.departamento}}" selected disabled hidden> {{post.departamento}} </option>
+                {% for deps in dep %}
+                    <option value="{{deps.departamento}}"> {{deps.departamento}} </option>
+                {% endfor %}
+                </select>
+
+            <h4>Serviço: <select name="servico"></h4>
+                <option value="{{post.servico}}" selected disabled hidden> {{post.servico}} </option>
+                {% for servs in serv %}
+                    <option value="{{servs.servico}}"> {{servs.servico}} </option>
+                {% endfor %}
+                </select>
+
             <input type="text" name="postagem" value="{{post.postagem}}">
             <button type="submit">Atualizar</button>
         </form>
