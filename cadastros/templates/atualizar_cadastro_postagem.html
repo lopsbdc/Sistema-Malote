@@ -7,14 +7,14 @@
             {% csrf_token %}
 
             <h4>Departamento: <select selected="{{post.departamento}}" name="departamento"></h4>
-                <option value="{{post.departamento}}" selected disabled hidden> {{post.departamento}} </option>
+                <option value="{{post.departamento}}" selected enabled hidden> {{post.departamento}} </option>
                 {% for deps in dep %}
                     <option value="{{deps.departamento}}"> {{deps.departamento}} </option>
                 {% endfor %}
                 </select>
 
             <h4>Serviço: <select name="servico"></h4>
-                <option value="{{post.servico}}" selected disabled hidden> {{post.servico}} </option>
+                <option value="{{post.servico}}" selected enabled hidden> {{post.servico}} </option>
                 {% for servs in serv %}
                     <option value="{{servs.servico}}"> {{servs.servico}} </option>
                 {% endfor %}

@@ -28,10 +28,10 @@ def salvar_envio(request):
     remetente = request.POST.get("remetente")
     rastreio = request.POST.get("rastreio")
     cep = request.POST.get("cep")
-    departamento = Setores.objects.filter(departamento = request.POST.get("departamento")).first()
+    departamento = Setores.objects.get(departamento = request.POST.get("departamento"))
     codigo = str(rastreio[:2])
-    servico = EtiquetaCorreios.objects.get(codigo = codigo)
-    postagem = CodigoPostagem.objects.filter(departamento=departamento, servico=servico).first()
+    servico = EtiquetaCorreios.objects.get(codigo=codigo)
+    postagem = CodigoPostagem.objects.get(departamento=departamento, servico__servico=servico)
     Envio.objects.create(destinatario=destinatario, rastreio=rastreio, remetente=remetente, cep=cep, departamento=departamento, servico=servico, postagem=postagem)
     return redirect(home_envio)
 
@@ -50,7 +50,7 @@ def update_envio(request, id):
     ndepartamento = Setores.objects.filter(departamento = request.POST.get("departamento")).first()
     codigo = str(nrastreio[:2])
     nservico = EtiquetaCorreios.objects.get(codigo=codigo)
-    postagem = CodigoPostagem.objects.filter(departamento=ndepartamento, servico=nservico).first()
+    postagem = CodigoPostagem.objects.get(departamento=ndepartamento, servico__servico=nservico)
     envio = Envio.objects.get(id=id)
     envio.cep = ncep
     envio.departamento = ndepartamento
