@@ -20,7 +20,8 @@ def home_envio(request):
     serv = EtiquetaCorreios.objects.values('servico').distinct()
     dep = Setores.objects.all()
     post = CodigoPostagem.objects.filter(departamento=departamento, servico=servico)
-    return render(request, "envios.html", {"envios": envios, "post":post, "serv":serv, "dep":dep})
+    ultimo = Envio.objects.all().order_by('-id')[:3]
+    return render(request, "envios.html", {"envios": envios, "post":post, "serv":serv, "dep":dep, "ultimo":ultimo})
 
 
 def salvar_envio(request):
@@ -72,23 +73,23 @@ def delete_envio(request, id):
     return redirect(index1)
 
 
-def mostrar_envios(request):
-    context = {}
+# def mostrar_envios(request):
+#     context = {}
     
-    filtrados = EnvioFilter(
-        request.GET,
-        queryset = Envio.objects.all()        
-    )
+#     filtrados = EnvioFilter(
+#         request.GET,
+#         queryset = Envio.objects.all()        
+#     )
     
-    context['filtrados'] = filtrados
+#     context['filtrados'] = filtrados
     
-    filtro_paginado = Paginator(filtrados.qs, 2)
-    num_paginas = request.GET.get('page')
-    filtro_obj = filtro_paginado.get_page(num_paginas)
+#     filtro_paginado = Paginator(filtrados.qs, 2)
+#     num_paginas = request.GET.get('page')
+#     filtro_obj = filtro_paginado.get_page(num_paginas)
     
-    context['filtro_obj'] = filtro_obj
+#     context['filtro_obj'] = filtro_obj
     
-    return render(request, 'filtro.html', context=context)
+#     return render(request, 'filtro.html', context=context)
     
 """ def mostrar_envios(request):
     class OrderListJson(base_datatable_view):

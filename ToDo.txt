@@ -4,10 +4,11 @@ O que implementar:
 
 Beneficios:
 
-opção de import com email, ID, CPF
-checkbox pra marcar varios entregues ao mesmo tempo
-Pagina unica de cadastro, só marca um checkbox pro tipo do beneficio recebido, e "data update" de quando foi recebido, e um "status" entregue
-pra cada tipo do beneficio
+- checkbox pra marcar varios entregues ao mesmo tempo
+- Pagina unica de cadastro, só marca um checkbox pro tipo do beneficio recebido, e "data update" de quando foi recebido, e um "status" entregue
+  pra cada tipo do beneficio
+- O disparador de emails, é melhor realizar apenas em uma planilha do Drive, com as formulas já prontas, só importando do APDATA
+  e jogando direto pra lá. Mais facil de controlar, opção de botão ou rotina, controle de falha de envios e etc
 
 
 Visão meninos:
@@ -39,13 +40,11 @@ Funcionalidades:
 Página unica dos borderôs, onde filtra por caixa de seleção o departamento. Só muda a visao de envio e recebimento (BDs diferentes,
 e preset de só mostrar o que ta como não entregue) https://www.youtube.com/watch?v=v4MYda3VhqQ
 Login de quem cadastrou, e quem atualizou pela ultima vez
-Combobox de código de postagem dos correios
 Pagina para cada tipo de erro Protocolo HTTP
-Exceção da constraint: Se digitar "Sem rastreio", então permite
-Set o campo para rastreio ou destinatario, ao clicar em salvar / zerar campos
 Indicadores: https://datatables.net/examples/api/highcharts.html
 Na hora de cadastrar o envio, avisar se o departamento tem aquele serviço cadastrado / Código de postagem
 checkbox para marcar diversos documentos como entregue
+criar uma constraint unique together de Setor + Tipo de Serviço
 
 
 **********************************************************************************************************************
@@ -60,9 +59,12 @@ Histórico de implementações:
 - Criar, editar e excluir departamentos (Não pode ser delete cascade!)
 - Criar, editar e excluir serviços + código de postagem dos correios (Não pode ser delete cascade!)
 - Ao enviar um documento ou editar, o código de postagem é automático, e não aceita uma combinação inexistente entre setor e codigo de postagem
-
+- Combobox de código de postagem dos correios
+- Exceção da constraint: Se receber um documento sem código de rastreio, pode apenas deixar em branco, que será aceito como a exceção
+- Set o campo para rastreio ou destinatario, ao clicar em salvar / zerar campos (Recebimento)
 
 Histórico de bugs:
 
 O campo "data de entrega", na parte do recebimento, não aceitava campo nulo / em branco (caso não tenha sido entregue ainda, por exemplo). Correção foi mudar o banco para aceitar Blank, e fazer um IF, que caso não tenha nenhum valor, ele não passe a informação
 Ao cadastrar um departamento novo + código de postagem, o sistema não reconhecia a combinação ao cadastrar envio
+Verificando um cadastro feito no Recebimento, não mostrava corretamente o Status do documento

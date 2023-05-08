@@ -21,6 +21,9 @@ class CodigoPostagem(models.Model):
     def __str__(self):
         return self.postagem
     
+    class Meta:
+        unique_together = ('departamento', 'servico',)
+    
     
 
 class Envio(models.Model):

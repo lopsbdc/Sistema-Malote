@@ -9,25 +9,31 @@
             <h5> CEP Remetente: <input type="text" name="cep_remetente" value="{{recebido.cep_remetente}}"> </h5>
             <h5> Rastreio: <input type="text" name="rastreio" value="{{recebido.rastreio}}" required> </h5>
             <h5> Tipo: <input type="text" name="tipo" value="{{recebido.tipo}}"> </h5>
-            <h5> AR Anexa: <select name="ar_anexa" value="{{recebido.ar_anexa}}">
+            <h5> AR Anexa: <select name="ar_anexa">
+                <option value="{{recebido.ar_anexa}}" selected enabled hidden> {{recebido.ar_anexa}} </option>
                 <option value="Sim"> Sim </option>
                 <option value="Não"> Não </option>
             </select> </h5>
+
             <h5>Departamento: <select name="departamento" required></h5>
                 <option value="{{recebido.departamento}}" selected enabled hidden>{{recebido.departamento}}</option>
                 {% for deps in dep %}
                     <option value="{{deps.departamento}}"> {{deps.departamento}} </option>
                 {% endfor %}
                 </select>
-            <h5> Status: <select name="status" value="{{recebido.status}}">
+
+            <h5> Status: <select name="status" value="{{recebido.status}}"> </h5>
+                <option value="{{recebido.status}}" selected enabled hidden> {{recebido.status}} </option>
                 <option value="Não Entregue">Não Entregue</option>
                 <option value="Entregue">Entregue</option>
-            </select> </h5>
-            <h5> Forma de entrega: <select name="forma_entrega" value="{{recebido.forma_entrega}}">
-                <option value=""></option>
+            </select> 
+
+            <h5> Forma de entrega: <select name="forma_entrega" value="{{recebido.forma_entrega}}"> </h5>
+                <option value="{{recebido.forma_entrega}}" selected enabled hidden> {{recebido.forma_entrega}} </option>
                 <option value="Workchat">Workchat</option>
                 <option value="Fisico">Fisico</option>
-            </select> </h5>
+            </select> 
+
             <h5> Data da Entrega: <input type="date" name="data_entrega" value='{{recebido.data_entrega|date:"Y-m-d"}}'> </h5>
             <h5> Observação: <input type="text" name="obs" value="{{recebido.observacao}}"> </h5>
             <h6> Data da ultima atualização: {{ recebido.data_att }} </h6>

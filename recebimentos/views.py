@@ -21,6 +21,10 @@ def salvar_recebimento(request):
     departamento = Setores.objects.filter(departamento = request.POST.get("departamento")).first()
     obs = request.POST.get("obs")
     status = "Não entregue"
+    
+    if rastreio == "":
+        rastreio = None
+
     Recebidos.objects.create(destinatario=destinatario, rastreio=rastreio, remetente=remetente, cep_remetente=cep_remetente, 
                              tipo=tipo, ar_anexa=ar_anexa, departamento=departamento, status=status, observacao=obs)
     return redirect(cadastro)

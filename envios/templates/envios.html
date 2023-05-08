@@ -1,12 +1,4 @@
 <body>
-    <h1>Listagem de Envios:</h1>
-    {% for envio in envios  %}
-        <li> ID: {{ envio.id }}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Postagem: {{envio.postagem}}, Data e Hora: {{envio.data}} 
-        <a href="{% url 'editar_envio' envio.id %}">Editar</a> 
-        <a href="{% url 'delete_envio' envio.id %}">Deletar</a> 
-        </li>
-    {% endfor %}
-    <br/>
 
     <h2>Realizar um novo cadastro? </h2>
 
@@ -24,7 +16,16 @@
                 <option value="{{deps.departamento}}">{{deps.departamento}} </option>
             {% endfor %}
             </select>
-
+        <br/> 
         <button type="submit">Salvar</button>
     </form>
+
+    <h3>Ultimos 3 Registros:</h3>
+    {% for envio in ultimo %}
+        <li> ID: {{ envio.id }}, Destinatario: {{envio.destinatario}}, Remetente: {{envio.remetente}}, Rastreio: {{envio.rastreio}}, Data e Hora: {{envio.data}},
+            CEP: {{envio.cep}}, Departamento: {{envio.departamento}}, Serviço: {{envio.servico}}, Cartão de Postagem: {{envio.postagem}}  
+        <a href="{% url 'editar_envio' envio.id %}">Editar</a> 
+        </li>
+    {% endfor %}
+
 </body>
