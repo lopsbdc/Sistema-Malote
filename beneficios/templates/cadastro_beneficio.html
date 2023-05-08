@@ -1,0 +1,18 @@
+<body>
+
+    <h2>Cadastrar um novo Beneficio? </h2>
+    
+    <form action="{% url 'salvar_beneficio' %}" method="POST">
+        {% csrf_token %}
+        <h4>Nome do Colaborador: <input id='nome' type="text" name="nome"></h4>
+        <h4>ID do colaborador: <input id='id_col' type="number" name="id_colaborador"></h4>
+        <h4>Vale transporte: <input id='vale_t' type="checkbox" name="vt"></h4>
+        <h4>Vale Alimentação: <input id='vale_a' type="checkbox" name="va"></h4>
+        <h4>Saúde: <input id='sau' value="" type="checkbox" name="saude"></h4>
+        <h4>Brinde: <input id='brin' type="checkbox" name="brinde"></h4>
+        <h4>Observacao: <input id='obs' type="text" name="observacao"></h4>
+
+        <button type="submit">Salvar</button>
+    </form>
+    
+</body>

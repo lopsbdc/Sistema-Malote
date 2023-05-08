@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'recebimentos.apps.RecebimentosConfig',
     'bordero.apps.BorderoConfig',
     'cadastros.apps.CadastrosConfig',
+    'beneficios.apps.BeneficiosConfig',
 ]
 
 MIDDLEWARE = [

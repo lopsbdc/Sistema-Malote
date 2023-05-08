@@ -1,0 +1,28 @@
+<body>
+
+    <h1>Você está visualizando o registro: {{ beneficio.id }}<h1>
+    
+        <form action="{% url 'update_beneficio' beneficio.id %}" method="POST">
+            {% csrf_token %}
+            <h5> Nome: <input type="text" name="nome" value="{{beneficio.nome}}"> </h5>
+            <h5> ID Colaborador: <input type="number" name="id_colaborador" value="{{beneficio.id_colaborador}}"> </h5>
+            <h5> Vale Transporte: <input type="checkbox" name="vt" {% if beneficio.vt %} checked{% endif %}> </h5>
+            <h5> Vale Alimentação: <input type="checkbox" name="va" {% if beneficio.va %} checked{% endif %}> </h5>
+            <h5> Saúde: <input type="checkbox" name="saude" {% if beneficio.saude %} checked{% endif %}> </h5>
+            <h5> Brinde: <input type="checkbox" name="brinde" {% if beneficio.brinde %} checked{% endif %}> </h5>
+            <h5> Status: <select name="status" value="{{beneficio.status}}">
+                <option value="Não Entregue">Não Entregue</option>
+                <option value="Entregue">Entregue</option>
+            </select> </h5>
+            <h5> Data da Entrega: <input type="date" name="data_entrega" value='{{beneficio.data_entrega|date:"Y-m-d"}}'> </h5>
+            <h5> Observação: <input type="text" name="obs" value="{{beneficio.observacao}}"> </h5>
+            <h6> Data da ultima atualização: {{ beneficio.data_att }} </h6>
+            <button type="submit">Atualizar</button>
+
+            <h3> Deseja excluir esse registro? </h3>
+            <a href="{% url 'delete_beneficio' beneficio.id %}">Deletar</a>
+        </form>
+    
+    
+
+</body>

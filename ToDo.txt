@@ -21,9 +21,9 @@ Visão ADM:
 
 - Consulta sem restrição, com att, delete e opção para "entregue"
 - Cadastro, com os ultimos 3 registros para correção ou deletar
-- Visão indicadores (Documentos parados, beneficios...)                 *
-- Visão borderôs                                                        *
-- Se deletar na consulta, cai no BD de auditoria, e some do oficial     *
+- Visão indicadores (Documentos parados, beneficios...)                  *
+- Visão borderôs                                                         *
+- Se deletar na consulta, cai no BD de auditoria, e some do oficial      *
 
 
 Visão Gestor:
@@ -59,8 +59,10 @@ Histórico de implementações:
 - Aviso de "data incompleta" ao inserir data da entrega
 - Criar, editar e excluir departamentos (Não pode ser delete cascade!)
 - Criar, editar e excluir serviços + código de postagem dos correios (Não pode ser delete cascade!)
+- Ao enviar um documento ou editar, o código de postagem é automático, e não aceita uma combinação inexistente entre setor e codigo de postagem
 
 
 Histórico de bugs:
 
 O campo "data de entrega", na parte do recebimento, não aceitava campo nulo / em branco (caso não tenha sido entregue ainda, por exemplo). Correção foi mudar o banco para aceitar Blank, e fazer um IF, que caso não tenha nenhum valor, ele não passe a informação
+Ao cadastrar um departamento novo + código de postagem, o sistema não reconhecia a combinação ao cadastrar envio
