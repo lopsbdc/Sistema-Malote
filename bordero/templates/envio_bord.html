@@ -1,28 +1,6 @@
-{% extends 'base_bord.html' %}
-{% block body %}
+Sem datatable por aqui. Só vai lá e faz uma tabelinha, bonitinha, igual o drive, com o espaço de assinatura
 
-<hr style="border-top:1px solid #000; clear:both;"/>
-<table id="table" class="table table-bordered" style="margin-left:auto; margin-right:auto">
-    <thead class="alert-warning">
-        <tr>
-            <th>Departamento</th>
-            <th>CEP</th>
-            <th>Rastreio</th>
-            <th>Codigo de Postagem</th>
-            <th>Data do registro</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for dado in bd %}
-        <tr>
-            <td>{{dado.departamento}}</td>
-            <td>{{dado.cep}}</td>
-            <td>{{dado.rastreio}}</td>
-            <td>{{dado.rastreio}}</td>
-            <td>{{dado.data}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+Filtra o dia de hoje direto pelo views,
+Coloca um objects.count pra ter o total do dia
 
-{% endblock %}
+Se quiser ver dias anteriores, só filtrar a data na consulta padrão e clicar em PDF. Mesma coisa.

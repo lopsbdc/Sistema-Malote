@@ -46,6 +46,7 @@ Na hora de cadastrar o envio, avisar se o departamento tem aquele serviço cadas
 checkbox para marcar diversos documentos como entregue
 criar uma constraint unique together de Setor + Tipo de Serviço
 
+Seria massa se a edição, ou adição, fosse igual o video acima. Uma telinha hover
 
 **********************************************************************************************************************
 
