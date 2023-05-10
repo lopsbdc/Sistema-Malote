@@ -11,6 +11,15 @@ Beneficios:
   e jogando direto pra lá. Mais facil de controlar, opção de botão ou rotina, controle de falha de envios e etc
 
 
+Visão borderôs:
+
+- Uma parte para o envio do dia, outra parte para os recebidos e não entregues ainda. Não faz sentido ter um histórico ou mais detalhado,
+  sendo que já existe a opção de consulta individual pra cada um. Ali é somente o borderô, feito pra ser rápido e util. Sem confirmar 
+  recebimento, sem detalhamento, sem enrolação
+- A parte de recebimento (exclusivamente) precisa da opção de filtro por coluna, para poder filtrar o departamento, ou a pessoa X que foi
+  retirar um ou vários documentos. Com o filtro realizado, só clicar em PDF e pronto.
+
+
 Visão meninos:
 
 - Consulta sem att ou delete, porem, com opção para "entregue" e forma de entrega (ter uma caixa de seleção antes, pra escolher se é pra mostrar
@@ -44,7 +53,6 @@ Pagina para cada tipo de erro Protocolo HTTP
 Indicadores: https://datatables.net/examples/api/highcharts.html
 Na hora de cadastrar o envio, avisar se o departamento tem aquele serviço cadastrado / Código de postagem
 checkbox para marcar diversos documentos como entregue
-criar uma constraint unique together de Setor + Tipo de Serviço
 
 Seria massa se a edição, ou adição, fosse igual o video acima. Uma telinha hover
 
@@ -63,6 +71,7 @@ Histórico de implementações:
 - Combobox de código de postagem dos correios
 - Exceção da constraint: Se receber um documento sem código de rastreio, pode apenas deixar em branco, que será aceito como a exceção
 - Set o campo para rastreio ou destinatario, ao clicar em salvar / zerar campos (Recebimento)
+- Constraint unique together de Setor + Tipo de Serviço (codigo de postagem)
 
 Histórico de bugs:
 
