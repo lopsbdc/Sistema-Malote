@@ -1,6 +1,38 @@
-Sem datatable por aqui. Só vai lá e faz uma tabelinha, bonitinha, igual o drive, com o espaço de assinatura
+<!--Sem datatable por aqui. Só vai lá e faz uma tabelinha, bonitinha, igual o drive, com o espaço de assinatura
 
 Filtra o dia de hoje direto pelo views,
 Coloca um objects.count pra ter o total do dia
 
-Se quiser ver dias anteriores, só filtrar a data na consulta padrão e clicar em PDF. Mesma coisa.
+Se quiser ver dias anteriores, só filtrar a data na consulta padrão e clicar em PDF. Mesma coisa.-->
+<head>
+    <title>Borderô de envio (Correios)</title>
+</head>
+
+<h2> Total de envios para hoje: {{total}}</h2>
+<h2> Data de envio: {{hoje}} </h2>
+
+<h2> Magazine Luiza:    ______________________________________________ </h2> <br/>
+<h2> Correios:          ______________________________________________ </h2>
+<br/>
+
+<h1> Relação de itens: </h1>
+<table id="table" class="table table-bordered" style="margin-left:auto; margin-right:auto; border: 0.5px solid;">
+    <thead class="alert-warning">
+        <tr>
+            <th>Departamento</th>
+            <th>CEP</th>
+            <th>Código de Rastreio</th>
+            <th>Cartão de Postagem</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dado in bd %}
+        <tr>
+            <td>{{dado.departamento}}</td>
+            <td>{{dado.cep}}</td>
+            <td>{{dado.rastreio}}</td>
+            <td>{{dado.postagem}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

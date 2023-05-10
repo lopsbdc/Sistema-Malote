@@ -57,6 +57,7 @@ def update_beneficio(request, id):
     nbrinde = request.POST.get("brinde")
     nstatus = request.POST.get("status")
     nobservacao = request.POST.get("observacao")
+    ndata = request.POST.get("data_entrega")
     
     if nvt == "on":
         nvt = True       
@@ -73,6 +74,7 @@ def update_beneficio(request, id):
     
     beneficio = Beneficios.objects.get(id=id)
     beneficio.id_colaborador = nid
+    beneficio.data_entrega = ndata
     beneficio.nome = nnome
     beneficio.vt = nvt
     beneficio.va = nva

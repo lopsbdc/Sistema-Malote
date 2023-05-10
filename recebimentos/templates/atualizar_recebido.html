@@ -34,6 +34,7 @@
                 <option value="Fisico">Fisico</option>
             </select> 
 
+            <h6> Data do recebimento: {{ recebido.data_recebimento }} </h6>
             <h5> Data da Entrega: <input type="date" name="data_entrega" value='{{recebido.data_entrega|date:"Y-m-d"}}'> </h5>
             <h5> Observação: <input type="text" name="obs" value="{{recebido.observacao}}"> </h5>
             <h6> Data da ultima atualização: {{ recebido.data_att }} </h6>

@@ -11,6 +11,7 @@
             <h5> Saúde: <input type="checkbox" name="saude" {% if beneficio.saude %} checked{% endif %}> </h5>
             <h5> Brinde: <input type="checkbox" name="brinde" {% if beneficio.brinde %} checked{% endif %}> </h5>
             <h5> Status: <select name="status" value="{{beneficio.status}}">
+                <option value="{{beneficio.status}}" selected enabled hidden> {{beneficio.status}} </option>
                 <option value="Não Entregue">Não Entregue</option>
                 <option value="Entregue">Entregue</option>
             </select> </h5>
